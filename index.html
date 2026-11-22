@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVBOX 電視盒桌面 Pro (Ver 8.90g) - 終生免費看 400+ 官方直播頻道</title>
+    <meta name="description" content="專為安卓電視盒、平板與手機打造的專屬桌面啟動器！整合超過 400 個 YouTube 官方新聞、戲劇、綜藝、音樂與國際頻道，內建一鍵設成首頁、無廣告播放器切換與永久免費註冊解鎖。">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #131b2e;
+            --card-border: #24324d;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #00E676;
+            --warning: #f59e0b;
+            --danger: #FF1744;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Microsoft JhengHei", "PingFang TC", sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.65; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 5; }
+        
+        /* 導覽列 */
+        nav { background: rgba(9, 13, 22, 0.98); border-bottom: 1px solid var(--card-border); position: sticky; top: 0; z-index: 999; padding: 14px 0; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 1.3rem; font-weight: bold; color: var(--accent); text-decoration: none; }
+        .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.98rem; padding: 6px 10px; border-radius: 6px; transition: 0.2s; cursor: pointer; display: inline-block; }
+        .nav-links a:hover, .nav-links a:active { color: var(--accent); background: rgba(255,255,255,0.08); }
+
+        /* 頂部主視覺 */
+        header { text-align: center; padding: 65px 20px; background: radial-gradient(circle at top, #1e293b 0%, #090d16 70%); border-bottom: 1px solid var(--card-border); position: relative; z-index: 10; }
+        .badge { display: inline-block; background: rgba(0, 230, 118, 0.12); color: var(--accent); padding: 6px 18px; border-radius: 30px; font-weight: bold; font-size: 0.95rem; margin-bottom: 18px; border: 1px solid rgba(0, 230, 118, 0.4); }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; color: #fff; letter-spacing: 1px; }
+        header p { font-size: 1.15rem; color: var(--text-muted); max-width: 760px; margin: 0 auto 32px; }
+        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 20; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.2s; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); }
+        .btn-primary:hover, .btn-primary:active { background: var(--primary-hover); transform: translateY(-2px); }
+        .btn-accent { background: var(--accent); color: #000; box-shadow: 0 4px 14px rgba(0, 230, 118, 0.3); }
+        .btn-accent:hover, .btn-accent:active { background: #00c853; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid #475569; color: #fff; background: transparent; }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+
+        /* 區塊共用 */
+        section { padding: 65px 0; border-bottom: 1px solid var(--card-border); scroll-margin-top: 70px; }
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 14px; color: #fff; }
+        .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 42px; font-size: 1.05rem; }
+
+        /* 實機畫面展示區 */
+        .hero-screen-card { background: var(--card-bg); border-radius: 14px; overflow: hidden; border: 2px solid #334155; margin-bottom: 32px; box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+        .hero-screen-card.help-highlight { border-color: var(--warning); }
+        .hero-img-wrap { width: 100%; aspect-ratio: 16 / 9; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--card-border); }
+        .hero-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: #000; }
+        .hero-caption { padding: 24px 28px; }
+        .hero-caption h3 { font-size: 1.4rem; color: var(--accent); margin-bottom: 12px; }
+        .help-highlight .hero-caption h3 { color: var(--warning); }
+        .hotspot-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+        .hotspot-tag { background: #090d16; border: 1px solid #334155; padding: 7px 14px; border-radius: 6px; font-size: 0.92rem; color: #e2e8f0; }
+
+        .sub-screen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        .screen-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border); }
+        .screen-img-wrap { width: 100%; aspect-ratio: 16 / 9; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--card-border); }
+        .screen-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .screen-caption { padding: 20px; }
+        .screen-caption h3 { font-size: 1.15rem; color: #38bdf8; margin-bottom: 8px; }
+        .screen-caption p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* 特色與隱藏功能網格 */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .card { background: var(--card-bg); padding: 26px; border-radius: 12px; border: 1px solid var(--card-border); }
+        .card h3 { font-size: 1.25rem; margin-bottom: 10px; color: #38bdf8; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* 頻道分類列表 */
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+        .cat-item { background: var(--card-bg); padding: 15px 18px; border-radius: 8px; font-size: 1rem; border-left: 4px solid var(--primary); display: flex; align-items: center; gap: 10px; }
+
+        /* 下載專區 (含 QR Code) */
+        .dl-card { background: var(--card-bg); padding: 28px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .dl-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; flex: 1; }
+        .qr-box { background: #fff; padding: 8px; border-radius: 8px; text-align: center; width: 120px; flex-shrink: 0; }
+        .qr-box img { width: 100%; height: auto; display: block; }
+        .qr-box span { display: block; color: #000; font-size: 0.75rem; font-weight: bold; margin-top: 4px; }
+        .dl-info h3 { font-size: 1.35rem; margin-bottom: 8px; color: #fff; }
+        .dl-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 6px; }
+        .key-tag { background: #334155; color: #fbbf24; padding: 3px 10px; border-radius: 4px; font-family: monospace; font-weight: bold; font-size: 1rem; }
+        .code-path { background: #090d16; padding: 4px 10px; border-radius: 5px; font-family: monospace; color: #38bdf8; border: 1px solid #334155; }
+
+        /* 教學步驟區 */
+        .step-box { background: var(--card-bg); padding: 26px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--accent); border-top: 1px solid var(--card-border); border-right: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .step-box.warning { border-left-color: var(--warning); }
+        .step-box.danger { border-left-color: var(--danger); }
+        .step-box h4 { font-size: 1.25rem; margin-bottom: 12px; color: #fff; }
+        .step-list { padding-left: 20px; color: #cbd5e1; }
+        .step-list li { margin-bottom: 8px; }
+
+        footer { text-align: center; padding: 45px 20px; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#top" class="logo" onclick="goSection('top'); return false;">[TVBOX] 電視盒桌面 Pro</a>
+            <div class="nav-links">
+                <a href="#preview" onclick="goSection('preview'); return false;">介面預覽</a>
+                <a href="#helpmap" onclick="goSection('helpmap'); return false;">操作全圖解</a>
+                <a href="#features" onclick="goSection('features'); return false;">強大功能</a>
+                <a href="#channels" onclick="goSection('channels'); return false;">頻道總覽</a>
+                <a href="#download" onclick="goSection('download'); return false;">軟體下載</a>
+                <a href="#guide" onclick="goSection('guide'); return false;">註冊與排解</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="top">
+        <div class="container">
+            <span class="badge">★ Universal Android Apps (Phone / Tablet / TV-BOX) ｜ Ver 8.90g Pro</span>
+            <h1>專為安卓電視盒打造的極簡大字體桌面</h1>
+            <p>免月租、免綁約！一鍵整合超過 400 個 YouTube 官方 24H 新聞、八點檔戲劇、經典綜藝、音樂演奏與各國直播頻道。內建無廣告播放器切換、節能倒數計時與記憶播放，長輩也能輕鬆上手。</p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-accent" onclick="goSection('download')">▼ 立即免費下載安裝</button>
+                <button type="button" class="btn btn-primary" onclick="goSection('helpmap')">► 查看全功能操作圖解</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="preview">
+        <div class="container">
+            <h2>【 實機操作介面與全功能圖解 】</h2>
+            <p class="section-sub">大圖示、高對比設計，完美支援電視遙控器與滑鼠短按／長按操作</p>
+            
+            <div class="hero-screen-card">
+                <div class="hero-img-wrap">
