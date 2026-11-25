@@ -26,10 +26,59 @@
         /* 導覽列 */
         nav { background: rgba(9, 13, 22, 0.98); border-bottom: 1px solid var(--card-border); position: sticky; top: 0; z-index: 999; padding: 14px 0; }
         .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .logo { font-size: 1.3rem; font-weight: bold; color: var(--accent); text-decoration: none; }
+
+        .logo { 
+            font-size: 1.25rem; 
+            font-weight: bold; 
+            color: var(--accent); 
+            text-decoration: none; 
+            background: rgba(255, 255, 255, 0.08); 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            border: 1px solid rgba(0, 230, 118, 0.3); 
+            transition: 0.2s; 
+            display: inline-block; 
+        }
+        .logo:hover, .logo:active { 
+            background: rgba(0, 230, 118, 0.18); 
+            border-color: var(--accent); 
+            transform: translateY(-1px); 
+        }
+
+
         .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.98rem; padding: 6px 10px; border-radius: 6px; transition: 0.2s; cursor: pointer; display: inline-block; }
-        .nav-links a:hover, .nav-links a:active { color: var(--accent); background: rgba(255,255,255,0.08); }
+        /* 導覽列一般按鈕（包含鼠標指到時的深灰圓角背景） */
+        .nav-links a { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            font-size: 0.98rem; 
+            padding: 6px 12px; 
+            border-radius: 6px; 
+            transition: 0.2s; 
+            display: inline-block; 
+        }
+        .nav-links a:hover, .nav-links a:active { 
+            color: var(--accent); 
+            background: rgba(255, 255, 255, 0.12); 
+        }
+
+        /* 特別醒目的「公告欄」專屬樣式（放在一般樣式下面，優先權才不會被蓋掉） */
+        .nav-links a.nav-notice {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent) !important;
+            border: 1px solid rgba(0, 230, 118, 0.5);
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 230, 118, 0.15);
+        }
+        .nav-links a.nav-notice:hover, .nav-links a.nav-notice:active {
+            background: var(--accent);
+            color: #000 !important;
+            transform: translateY(-1px);
+        }
+
+
 
         /* 頂部主視覺 */
         header { text-align: center; padding: 65px 20px; background: radial-gradient(circle at top, #1e293b 0%, #090d16 70%); border-bottom: 1px solid var(--card-border); position: relative; z-index: 10; }
@@ -105,13 +154,18 @@
 
     <nav>
         <div class="container nav-inner">
-            <a href="#top" class="logo" onclick="goSection('top'); return false;">[TVBOX] 電視盒桌面 Pro</a>
+            <a href="#top" class="logo" onclick="goSection('top'); return false;">回首頁🏠  TV-BOX 電視盒桌面</a>
             <div class="nav-links">
-                <a href="#preview" onclick="goSection('preview'); return false;">介面預覽</a>
-                <a href="#helpmap" onclick="goSection('helpmap'); return false;">操作全圖解</a>
-                <a href="#features" onclick="goSection('features'); return false;">強大功能</a>
-                <a href="#channels" onclick="goSection('channels'); return false;">頻道總覽</a>
-                <a href="#download" onclick="goSection('download'); return false;">軟體下載</a>
+                <a href="#preview" onclick=>介面預覽</a>
+                <a href="#helpmap" onclick=>操作全圖解</a>
+                <a href="#features" onclick=>強大功能</a>
+                <a href="#channels" onclick=>頻道總覽</a>
+                <a href="#download" onclick=>軟體下載</a>
+<!--
+         <a href="https://drive.google.com/file/d/1Xm7If80l0sn_aCsxypWyiG0EjMWWf0qm/view?usp=sharing" style="color: #4ade80; font-weight: bold;">公告欄</a> 
+ -->
+                <a href="https://drive.google.com/file/d/1Xm7If80l0sn_aCsxypWyiG0EjMWWf0qm/view?usp=sharing" class="nav-notice">公告欄</a>
+
                 <a href="#guide" onclick="goSection('guide'); return false;">註冊與排解</a>
             </div>
         </div>
@@ -119,20 +173,253 @@
 
     <header id="top">
         <div class="container">
-            <span class="badge">★ Universal Android Apps (Phone / Tablet / TV-BOX) ｜ Ver 8.90g Pro</span>
+            <span class="badge">★ Universal Android Apps (Phone / Tablet / TV-BOX) ｜ Ver 8.xxx Pro</span>
             <h1>專為安卓電視盒打造的極簡大字體桌面</h1>
-            <p>免月租、免綁約！一鍵整合超過 400 個 YouTube 官方 24H 新聞、八點檔戲劇、經典綜藝、音樂演奏與各國直播頻道。內建無廣告播放器切換、節能倒數計時與記憶播放，長輩也能輕鬆上手。</p>
+            <p>免月租、免綁約！一鍵整合超過 400 個 YouTube官方 24H 新聞、八點檔戲劇、經典綜藝、音樂演奏與各國直播頻道。內建無廣告播放器切換、節能倒數計時與記憶播放，長輩也能輕鬆上手。  [適用於:手機/平板及安卓系統...] </p>
             <div class="btn-group">
-                <button type="button" class="btn btn-accent" onclick="goSection('download')">▼ 立即免費下載安裝</button>
-                <button type="button" class="btn btn-primary" onclick="goSection('helpmap')">► 查看全功能操作圖解</button>
+                <a href="#download" class="btn btn-accent">▼ 立即免費下載安裝</a>
+                <a href="#helpmap" class="btn btn-primary">► 查看全功能操作圖解</a>
             </div>
         </div>
     </header>
 
-    <section id="preview">
+       <section id="preview">
         <div class="container">
             <h2>【 實機操作介面與全功能圖解 】</h2>
             <p class="section-sub">大圖示、高對比設計，完美支援電視遙控器與滑鼠短按／長按操作</p>
             
             <div class="hero-screen-card">
                 <div class="hero-img-wrap">
+                    <img src="desktop.jpg" alt="電視盒主桌面畫面 Ver 8.90g Pro" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#64748b;padding:20px;text-align:center;\'>[ 請將主桌面截圖命名為 desktop.jpg 並放於同資料夾 ]</span>'">
+                </div>
+                <div class="hero-caption">
+                    <h3>■ 電視盒智慧主桌面 (Ver 8.90g Pro)</h3>
+                    <p style="color:#cbd5e1;">專為客廳大螢幕設計的直覺化操作介面，所有常用功能與娛樂頻道一目了然，無需在層層選單中迷路：</p>
+                    <div class="hotspot-tags">
+                        <span class="hotspot-tag"><strong>[頂部工具列]</strong>：進階設定、24H新聞直播、FAST免費電影、亮度音量調整</span>
+                        <span class="hotspot-tag"><strong>[左側快捷區]</strong>：一鍵直播、IPTV直播、YT-TV直播、一鍵清理、測網速</span>
+                        <span class="hotspot-tag"><strong>[中央自訂區]</strong>：內建 SmartTube / YouTube / Play商店，並提供 15 個自訂 App 快捷格位</span>
+                        <span class="hotspot-tag"><strong>[右側控制區]</strong>：即時日期時間、倒數計時關機、醒目大電源鍵、記憶播放與在地氣象</span>
+                        <span class="hotspot-tag"><strong>[底部資訊列]</strong>：即時新聞跑馬燈與右下角「使用說明 Help」一鍵查看教學</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="helpmap" class="hero-screen-card help-highlight">
+                <div class="hero-img-wrap">
+                    <img src="help.jpg" alt="系統操作方法全功能圖解" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#64748b;padding:20px;text-align:center;\'>[ 請將系統操作方法截圖命名為 help.jpg 並放於同資料夾 ]</span>'">
+                </div>
+                <div class="hero-caption">
+                    <h3>★ 系統操作方法：短按 vs 長按隱藏秘技全圖解</h3>
+                    <p style="color:#cbd5e1;">軟體內建超多貼心快捷手勢，在桌面隨時點擊右下角<strong>「使用說明 Help」</strong>也能叫出這張教學圖：</p>
+                    <div class="hotspot-tags">
+                        <span class="hotspot-tag"><strong>[自訂桌面 App]</strong>：點擊「+」<strong>點 1 下設定 APP</strong>，<strong>長按 5 秒取消 APP</strong></span>
+                        <span class="hotspot-tag"><strong>[電源與計時]</strong>：左上角<strong>長按 5 秒鎖屏休眠</strong>、<strong>長按 2 秒設定計時關機</strong>；右側大電源<strong>點 1 下關機</strong></span>
+                        <span class="hotspot-tag"><strong>[背景色與記憶]</strong>：右側大電源<strong>長按更換背景色</strong>；記憶播放<strong>長按 1 秒記憶頻道</strong></span>
+                        <span class="hotspot-tag"><strong>[新聞與天氣]</strong>：底部新聞跑馬燈<strong>點一下看完整內容</strong>、<strong>長按 2 秒更新</strong>；右下天氣<strong>長按 2 秒地震警報測試</strong></span>
+                        <span class="hotspot-tag"><strong>[網路與螢幕]</strong>：頂部 Wi-Fi 圖示<strong>長按看斷網狀態日誌</strong>；太陽圖示<strong>點擊調整螢幕大小</strong>；右上時間<strong>點 2 下網路校正</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-screen-grid">
+                <div class="screen-card">
+                    <div class="screen-img-wrap">
+                        <img src="livetv.jpg" alt="一鍵直播頻道牆" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#64748b;padding:20px;text-align:center;\'>[ 請將一鍵直播截圖命名為 livetv.jpg 並放於同資料夾 ]</span>'">
+                    </div>
+                    <div class="screen-caption">
+                        <h3>1. 一鍵直播頻道牆（永久解鎖版）</h3>
+                        <p>圖形化大卡片選台介面，涵蓋民視、TVBS、東森、三立、中視、華視、地震速報等 400+ 頻道，遙控器上下左右即可秒速轉台。</p>
+                    </div>
+                </div>
+
+                <div class="screen-card">
+                    <div class="screen-img-wrap">
+                        <img src="settings.jpg" alt="進階隱藏設定選單" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#64748b;padding:20px;text-align:center;\'>[ 請將進階設定截圖命名為 settings.jpg 並放於同資料夾 ]</span>'">
+                    </div>
+                    <div class="screen-caption">
+                        <h3>2. 進階隱藏設定選單</h3>
+                        <p>點擊主桌面左上角「扳手圖示」開啟！內建「一鍵設成首頁」、「YouTube 播放器選擇（避開廣告）」、「官方一鍵更新」及「一鍵註冊永久播放」。</p>
+                    </div>
+                </div>
+
+                <div class="screen-card">
+                    <div class="screen-img-wrap">
+                        <img src="qrcode.jpg" alt="內建掃碼下載功能" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#64748b;padding:20px;text-align:center;\'>[ 請將掃碼下載截圖命名為 qrcode.jpg 並放於同資料夾 ]</span>'">
+                    </div>
+                    <div class="screen-caption">
+                        <h3>3. 內建 QR Code 掃碼更新系統</h3>
+                        <p>選單內直接內建官方雲端載點與 QR Code，用手機相機一掃即可快速下載主程式與 SmartTube 無廣告播放器。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>【 獨家開發的進階實用功能 】</h2>
+            <p class="section-sub">針對安卓電視盒痛點量身打造，解決操作繁瑣與系統卡頓問題</p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>1. 一鍵設成首頁 & 開機自動跳轉</h3>
+                    <p>在進階設定中點擊「一鍵設成首頁」，並開啟「開機自動跳轉」，每次打開電視盒直接進入專屬桌面，不怕長輩按錯跳回原廠複雜介面。</p>
+                </div>
+                <div class="card">
+                    <h3>2. YouTube 播放器選擇（避開廣告）</h3>
+                    <p>可自由指定使用「無廣告版 SmartTube」開啟直播頻道，搭配「無障礙設定」優化，享受純淨不中斷的看電視體驗。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 直播列表（官方一鍵更新）</h3>
+                    <p>免拆機、免重裝 App！只要在進階設定點擊「直播列表-(官方更新)」，即可同步最新頻道清單；也支援玩家自行「編輯直播列表」與「IPTV 列表」。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 節能減碳倒數計時 & 記憶播放</h3>
+                    <p>睡前看電視怕忘記關機？長按 2 秒即可設定計時關機；「記憶播放」是在播放清單中加入記憶喜愛的頻道（長按 1 秒記憶）加入 9 宮格中。</p>
+                </div>
+                <div class="card">
+                    <h3>5. 自訂背景色 & 七彩呼吸燈效</h3>
+                    <p>長按右側電源鍵即可快速切換桌面底色，也支援 RGB 視覺化調色與「七彩呼吸」動態效果，打造最護眼的客廳視覺。</p>
+                </div>
+                <div class="card">
+                    <h3>6. 地震警報測試 & 一鍵系統維護</h3>
+                    <p>長按右下角天氣區塊 2 秒可進行「地震警報測試」；左側配備一鍵清理、硬體資訊與測網速，讓電視盒常保順暢。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="channels">
+        <div class="container">
+            <h2>【 內建 12 大精選頻道分類（400+ 頻道） 】</h2>
+            <p class="section-sub">全部串接各大電視台與創作者於 YouTube 公開發布之官方頻道，穩定流暢不卡頓</p>
+            <div class="category-grid">
+                <div class="cat-item">🔴 台灣 24H 新聞直播 & 地震速報</div>
+                <div class="cat-item">📺 台灣八點檔、經典綜藝與連續劇</div>
+                <div class="cat-item">🟢 日本、韓國、美國、大陸官方台</div>
+                <div class="cat-item">🔥 momo、東森、美好等購物頻道</div>
+                <div class="cat-item">💛 政論節目、財經台股與科學探索</div>
+                <div class="cat-item">🎨 健康2.0、美食烹飪、中醫與風水</div>
+                <div class="cat-item">🌈 免費院線電影、動作片與熱門短劇</div>
+                <div class="cat-item">🟣 親子卡通、園藝種植與 DIY 教學</div>
+                <div class="cat-item">🔵 鋼琴、薩克斯風、民歌與療癒音樂</div>
+                <div class="cat-item">🖤 節能計時器與影音使用教學</div>
+                <div class="cat-item">💾下載手動更新...(網頁版)...</div>
+                <div class="cat-item">😎 開放用戶:開源中頻道 未分類</div>
+            </div>
+        </div>
+    </section>
+
+
+
+      <section id="download">
+        <div class="container">
+            <h2>【 官方軟體與頻道更新檔下載區 】</h2>
+            <p class="section-sub">支援電腦直接下載，或使用手機相機掃描左側 QR Code 傳送至電視盒安裝</p>
+            
+            <div class="dl-card">
+                <div class="dl-left">
+                    <div class="qr-box">
+                        <img src="qr1.png" alt="下載主程式 QR Code">
+                        <span>手機掃碼下載</span>
+                    </div>
+                    <div class="dl-info">
+                        <h3>1. 電視盒桌面主程式 (TVBOX_Launcher_Pro.zip)</h3>
+                        <p>版本：<strong>Ver 8.90g Pro</strong>（支援手機 / 平板 / 安卓電視盒）</p>
+                        <p>解壓縮密碼：<span class="key-tag">0000</span> ｜ 儲存路徑：<span class="code-path">/sdcard/Download/</span></p>
+                    </div>
+                </div>
+                <a href="https://drive.usercontent.google.com/download?id=1DGhlLNnpAR8J_-PSrm2h6LMmt9pRXyqA&export=download" target="_blank" class="btn btn-primary">▼ 直接下載主程式</a>
+            </div>
+
+
+
+
+
+            <div class="dl-card">
+                <div class="dl-left">
+                    <div class="qr-box">
+                        <img src="qr2.png" alt="下載 SmartTube QR Code">
+                        <span>手機掃碼下載</span>
+                    </div>
+                    <div class="dl-info">
+                        <h3>2. 無廣告 YouTube 播放器 (SmartTube_stable_universal.zip)</h3>
+                        <p>強烈建議搭配安裝！觀看所有新聞與戲劇頻道完全無廣告干擾</p>
+                        <p>解壓縮密碼：<span class="key-tag">0000</span> ｜ <a href="https://github.com/yuliskov/SmartTube/releases" target="_blank" style="color:#38bdf8;">GitHub 開源官方載點</a></p>
+                    </div>
+                </div>
+               <a href="https://drive.usercontent.google.com/download?id=187AxTiaHaMuhw4MXoBz9SaBm9NwH3E86&export=download&authuser=0" target="_blank" class="btn btn-primary">▼ 直接下載 SmartTube</a>
+            </div>
+
+
+
+
+
+   <!-- 暫時隱藏第 3 項下載（日後要開啟時，把前後的註解符號刪掉即可）
+
+            <div class="dl-card">
+                <div class="dl-left">
+                    <div class="qr-box">
+                        <img src="qr3.png" alt="下載頻道設定檔 QR Code">
+                        <span>手機掃碼下載</span>
+                    </div>
+                    <div class="dl-info">
+                        <h3>3. 最新頻道清單手動更新檔 (news_config.txt)</h3>
+                        <p>若不使用選單內建的一鍵更新，亦可手動下載此檔案並放入電視盒的 <span class="code-path">Download\*.*</span> 資料夾中即可完成頻道更新。</p>
+                    </div>
+                </div>
+
+
+
+
+                <a href="https://drive.google.com/file/d/1nD9ERnWvlxOCj5ykTS7-sf8Ns41jrOyQ/view" target="_blank" class="btn btn-outline">► 下載頻道設定檔</a>
+            </div>
+        </div>
+    </section>
+
+ -->
+
+
+
+    <section id="guide">
+        <div class="container">
+            <h2>【 永久註冊解鎖與系統設定教學 】</h2>
+            <p class="section-sub">初次安裝只需 30 秒完成設定，即可永久免費解鎖全部頻道</p>
+            
+            <div class="step-box danger">
+                <h4>★ 步驟一：如何啟用「一鍵註冊永久播放」？</h4>
+                <ol class="step-list">
+                    <li>開啟電視盒桌面，點擊上方工具列的<strong>「藍色扳手圖示」</strong>進入<strong>【進階隱藏設定清單】</strong>。</li>
+                    <li>找到左下角的<strong>【一鍵註冊永久播放】</strong>並點擊進入。</li>
+                    <li>點擊<strong>【一鍵送出註冊碼】</strong>，當畫面上的鎖頭圖示由紅色未解鎖變為綠色已解鎖，即代表永久開通成功！</li>
+                </ol>
+            </div>
+
+            <div class="step-box">
+                <h4>★ 步驟二：建議開啟的 3 個最佳化設定（在進階隱藏設定清單內）</h4>
+                <ul class="step-list">
+                    <li><strong>一鍵設成首頁</strong>：將本程式設為預設桌面啟動器，按遙控器「首頁鍵 (Home)」不會跳回舊桌面。</li>
+                    <li><strong>YouTube 播放器選擇</strong>：選擇已安裝的 <code>SmartTube</code>，即可自動避開 YouTube 片頭與插播廣告。</li>
+                    <li><strong>直播列表-(官方更新)</strong>：日後若有新增頻道，隨時點選此按鈕即可線上一鍵同步最新清單。</li>
+                </ul>
+            </div>
+
+            <div class="step-box warning">
+                <h4>▲ 常見問題：Android 11 以上系統找不到下載的更新檔怎麼辦？</h4>
+                <p style="color:#cbd5e1; margin-bottom:10px;">因 Android 11 以上系統加強隱私保護，Chrome 預設會將檔案下載至受保護的私有目錄（<code>/Android/data/com.android.chrome/files/Download</code>），導致 App 無法讀取手動更新檔。</p>
+                <p style="color:#fff;"><strong>【終極解決法：重置 Chrome 儲存權限】</strong><br>
+                請依序點擊電視盒的：<strong>[設定] ➔ [應用程式] ➔ [查看所有應用程式] ➔ [Chrome] ➔ [清除資料]</strong>。<br>
+                清除後重新開啟 Chrome 下載，系統即會自動改回公開資料夾 <span class="code-path">.../downloads/</span> 囉！</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>TVBOX Launcher Pro (Ver 8.90g)</strong> ｜ Developer: jimmy568555@gmail.com © 2026 All Rights Reserved</p>
+            <p style="margin-top:10px; font-size:0.85rem; max-width:800px; margin-left:auto; margin-right:auto;">免責聲明：本應用程式僅為公開網路影音連結之整合桌面啟動器，所有影音內容皆源自各大電視台與創作者於 YouTube 平台公開發布之官方頻道。歡迎提供開源地址資料寄至開發者信箱協助更新。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
